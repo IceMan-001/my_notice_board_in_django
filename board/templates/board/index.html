@@ -1,0 +1,15 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+<h2>Это главная страница</h2>
+
+<a href="{% url 'board:post_list'%}"><h3>Все объявления</h3></a>
+<a href="{% url 'board:post_list_in_table'%}"><h3>Объявления в виде таблицы</h3></a>
+<a href="{% url 'board:add_post'%}"><h3>Создать новое объявление</h3></a>
+<a href="{% url 'board:about'%}"><h3>О сайте</h3></a>
+<a href="{% url 'board:contacts'%}"><h3>Контакты</h3></a>
+
+{% endblock content %}
+
+
+

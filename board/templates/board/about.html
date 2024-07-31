@@ -1,0 +1,10 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+<h1>Это страница о нас</h1>
+<br>
+<p>Автор - {{name}} {{lastname}}</p>
+<p>Электронный адрес - {{email}}</p>
+
+<a href="{% url 'board:index'%}"><h3>На главную страницу</h3></a>
+{% endblock content %}

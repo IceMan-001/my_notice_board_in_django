@@ -1,0 +1,25 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+<h2>Информация об объявлении № {{posts.id}}</h2>
+<p>Автор - {{posts.author}}</p>
+<p>Название - {{posts.title}}</p>
+<p>Текст объявления:</p>
+<p>{{posts.text}}</p>
+
+{% if posts.image %}
+    <img width="300px" height="200px" src="{{posts.image.url}}">
+{% endif %}
+<br>
+<p>Создан: {{posts.created_at}}</p>
+<div>
+    <a href="{% url 'board:post_edit' pk=posts.id%}" class="btn btn-primary">Редактировать</a>
+    <form action="{url 'board:post_delete' pk=posts.id%}" method="post" style="display:inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
+</div>
+
+
+<a href="{% url 'board:index'%}"><h3>На главную страницу</h3></a>
+{% endblock content %}
