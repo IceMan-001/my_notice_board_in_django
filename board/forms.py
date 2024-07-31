@@ -15,3 +15,9 @@ class PostForm(forms.ModelForm):
         # второй способ не надо так делать
         # fields = '__all__'
         # exclude = ['created_at'] или так
+
+
+# class DeleteNewForm(forms.ModelForm):
+#     class Meta:
+#         model = Post
+#         fields = []

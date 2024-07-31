@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 
 from .forms import PostForm
 from .models import Post
+# from .forms import DeleteNewForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -106,5 +108,12 @@ def post_edit(request, pk):
 
 
 def post_delete(request, pk):
-    # post = get_object_or_404(Post, pk=pk)
-    pass
+    post = get_object_or_404(Post, pk=pk)
+    context = {'post': post}
+
+    if request.method == 'GET':
+        return render(request, template_name='board/post_confirm_delete.html', context=context)
+    elif request.method == 'POST':
+        post.delete()
+        messages.success(request, message='The post has been deleted successfully.')
+        return redirect('posts')
