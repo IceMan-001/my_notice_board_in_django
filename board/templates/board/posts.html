@@ -3,10 +3,10 @@
 {% block content %}
 <h2>Список постов</h2>
 {% for post in posts %}
-<p>{{post.author}}: <a href="{% url 'board:post_detail' pk=post.id %}">{{post.title}}</a>></p>
+    <p>Автор: {{post.author}}: <a href="{% url 'board:post_detail' pk=post.id %}"> Подробнее: {{post.title}}</a></p>
     <p>{{post.text}}</p>
     <p>{{post.created_at}}</p>
     <br>
 {% endfor %}
-<a href="{% url 'board:index'%}"><h3>На главную страницу</h3></a>
+<a href="{% url 'board:index' %}"><h3>На главную страницу</h3></a>
 {% endblock content %}

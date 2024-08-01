@@ -1,216 +1,345 @@
 {% extends 'board/base.html' %}
-
-{% block content %}
 {% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/footer.css' %}"/>
+<style>
 
-<link rel="stylesheet" href="{% static 'css/header.css' %}" />
-<link rel="stylesheet" href="{% static 'css/footer.css' %}" />
-    <header class="row bg-primary">
-        <div class="col-md-1 col-xs-12">
-            <a href="#"><img src="https://i.postimg.cc/7YwSPfC7/logo.png" alt="Books" /></a>
+<!--body {-->
+<!--    width: 98vw;-->
+<!--    padding: 0;-->
+<!--    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";-->
+<!--    display: inline-block;-->
+<!--    }-->
+
+
+<!--li {-->
+<!--    display: inline-block;-->
+<!--    margin: 10px;-->
+<!--}-->
+
+<!--header {-->
+<!--    width: 105%;-->
+<!--    background-color: #333333;-->
+<!--    padding-left: 20px;-->
+<!--    padding-top: 7px;-->
+<!--    margin-bottom: 20px;-->
+<!--}-->
+
+<!--header a {-->
+<!--    color: #FFF;-->
+<!--}-->
+
+<!--header a:hover,-->
+<!--header nav a:visited {-->
+<!--    color: #fff;-->
+<!--    text-decoration: none;-->
+<!--}-->
+
+<!--header img {-->
+<!--    margin-top: 10px;-->
+<!--}-->
+
+<!--nav {-->
+<!--    text-align: right;-->
+<!--}-->
+
+<!--section img {-->
+<!--    width: 150px;-->
+<!--    height: 125px;-->
+<!--    border-radius: 5%;-->
+<!--}-->
+
+<!--.container Row my_class {-->
+<!--     display: inline-block;-->
+<!--}-->
+
+<!--h4 {-->
+<!--     color: lightslategrey;-->
+<!--    font-family: 'Times New Roman', Times, serif;-->
+<!--    font-style: oblique;-->
+<!--    text-align: center;-->
+<!--    font-weight: bold;-->
+<!--    font-size: 18px;-->
+<!--    margin-top: 15px;-->
+<!--}-->
+
+<!--article {-->
+<!--    display: inline-block;-->
+<!--}-->
+
+<!--.image {-->
+<!--    text-align: center;-->
+<!--}-->
+
+<!--p {-->
+<!--    font-size: 16px;-->
+<!--    font-weight: 500;-->
+<!--}-->
+
+<!--@media (min-width:768px) {-->
+<!--    .col-md-3 {-->
+<!--        max-width: 24%;-->
+<!--    }-->
+<!--}-->
+
+<!--@media only screen and (max-width:770px) {-->
+<!--    h4 {-->
+<!--        margin-top: 15px;-->
+<!--        text-align: left;-->
+<!--    }-->
+
+<!--    .image {-->
+<!--        margin-right: 10px;-->
+<!--    }-->
+<!--}-->
+
+<!--@media only screen and (min-width:375px) and (max-width:768px) {-->
+<!--    nav {-->
+<!--        text-align: center;-->
+<!--    }-->
+
+<!--    header div {-->
+<!--        text-align: center;-->
+<!--    }-->
+
+<!--    li {-->
+<!--        margin: 5px;-->
+<!--    }-->
+
+<!--    header {-->
+<!--        padding: 0;-->
+<!--    }-->
+<!--}-->
+
+<!--@media only screen and (max-width:375px) {-->
+<!--    header {-->
+<!--        width: 105vw;-->
+<!--        padding: 0;-->
+<!--    }-->
+
+<!--    nav,-->
+<!--    header div {-->
+<!--        text-align: center;-->
+<!--        padding: 0 !important;-->
+<!--    }-->
+
+<!--    ul {-->
+<!--        padding: 0;-->
+<!--    }-->
+
+</style>
+<header class="row bg-primary">
+    <div class="col-md-1 col-xs-12">
+        <a href="#"><img src="{% static 'img/K_3.jpg' %}" alt="Books"/></a>
+    </div>
+    <nav class="col-md-10 col-xs-12">
+        <ul>
+            <li><a href="{% url 'board:post_list_in_table'%}">Объявления в виде таблицы</a></li>
+            <li><a href="{% url 'board:about'%}">О сайте</a></li>
+            <li><a href="{% url 'board:contacts'%}">Контакты</a></li>
+            <li><a href="{% url 'board:post_list'%}">Все объявления</a></li>
+            <li><a href="{% url 'board:add_post'%}">Создать новое объявление</a></li>
+            <li><a href="#">Регистрация</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<section class="container Row my_class">
+    <article class="col-md-3">
+        {% for post in posts %}
+        <div class="row">
+            <div class="col-md-12 col-sm-3 image">
+                <img src="{{post.image.url}}"/>
+            </div>
+            <div class="col-md-12 col-sm-8">
+                 <h4 class="text-uppercase">Объявление: {{post.id}}</h4>
+                <p>Автор: {{post.author}}: <a href="{% url 'board:post_detail' pk=post.id %}">Подробнее про {{post.title}}</a></p>
+                <p>{{post.text}}</p>
+                <p>{{post.created_at}}</p>
+                <br>
+                {% endfor %}
+            </div>
         </div>
-        <nav class="col-md-10 col-xs-12">
-            <ul>
-                <li><a href="{% url 'board:post_list_in_table'%}">Объявления в виде таблицы</a></li>
-                <li><a href="{% url 'board:about'%}">О сайте</a></li>
-                <li><a href="{% url 'board:contacts'%}">Контакты</a></li>
-                <li><a href="#">Регистрация</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="container Row">
-        <article class="col-md-3">
-            <div class="row">
-                <div class="col-md-12 col-sm-3 image">
-                    <img src="https://i.postimg.cc/2yfhZ52s/book1.jpg" />
-                </div>
-                <div class="col-md-12 col-sm-8">
-                    <h4 class="text-uppercase">book1</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt
-                        quaerat,
-                        tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.
-                    </p>
-                </div>
-            </div>
-        </article>
-        <article class="col-md-3">
-            <div class="row">
-                <div class="col-md-12  col-sm-3 image">
-                    <img src="https://i.postimg.cc/W14rrCw1/book2.jpg" />
-                </div>
-                <div class="col-md-12 col-sm-8">
-                    <h4 class="text-uppercase">book2</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt
-                        quaerat,
-                        tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.
-                    </p>
-                </div>
-            </div>
-        </article>
-        <article class="col-md-3">
-            <div class="row">
-                <div class="col-md-12 col-sm-3 image">
-                    <img src="https://i.postimg.cc/rwY49jfC/book3.jpg" />
-                </div>
-                <div class="col-md-12 col-sm-8">
-                    <h4 class="text-uppercase">book3</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt
-                        quaerat,
-                        tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.
-                    </p>
-                </div>
-            </div>
-        </article>
-        <article class="col-md-3">
-            <div class="row">
-                <div class="col-md-12 col-sm-3 image">
-                    <img src="https://i.postimg.cc/CKBqr8ty/book4.jpg" />
-                </div>
-                <div class="col-md-12 col-sm-8">
-                    <h4 class="text-uppercase">book4</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt
-                        quaerat,
-                        tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.
-                    </p>
-                </div>
-            </div>
-        </article>
-    </section>
-    <!--Copie de section 1-->
-    <section class="container Row">
-        <article class="col-md-3">
-            <div class="row">
-                <div class="col-md-12 col-sm-3 image">
-                    <img src="https://i.postimg.cc/2yfhZ52s/book1.jpg" />
-                </div>
-                <div class="col-md-12 col-sm-8">
-                    <h4 class="text-uppercase">book1</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt
-                        quaerat,
-                        tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.
-                    </p>
-                </div>
-            </div>
-        </article>
-        <article class="col-md-3">
-            <div class="row">
-                <div class="col-md-12  col-sm-3 image">
-                    <img src="https://i.postimg.cc/W14rrCw1/book2.jpg" />
-                </div>
-                <div class="col-md-12 col-sm-8">
-                    <h4 class="text-uppercase">book2</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt
-                        quaerat,
-                        tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.
-                    </p>
-                </div>
-            </div>
-        </article>
-        <article class="col-md-3">
-            <div class="row">
-                <div class="col-md-12 col-sm-3 image">
-                    <img src="https://i.postimg.cc/rwY49jfC/book3.jpg" />
-                </div>
-                <div class="col-md-12 col-sm-8">
-                    <h4 class="text-uppercase">book3</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt
-                        quaerat,
-                        tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.
-                    </p>
-                </div>
-            </div>
-        </article>
-        <article class="col-md-3">
-            <div class="row">
-                <div class="col-md-12 col-sm-3 image">
-                    <img src="https://i.postimg.cc/CKBqr8ty/book4.jpg" />
-                </div>
-                <div class="col-md-12 col-sm-8">
-                    <h4 class="text-uppercase">book4</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt
-                        quaerat,
-                        tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.
-                    </p>
-                </div>
-            </div>
-        </article>
-    </section>
-    <footer>
-        <div class="social">
-            <p>Follow me on social media</p>
-            <ul class="wrapper">
-                <a href="#" target="_blank">
-                    <li class="icon linkedin">
-                        <span class="tooltip">LinkedIn</span>
-                        <span><i class="fab fa-linkedin"></i></span>
-                    </li>
-                </a>
-                <a href="#" target="_blank">
-                    <li class="icon github">
-                        <span class="tooltip">GitHub</span>
-                        <span><i class="fab fa-github"></i></span>
-                    </li>
-                </a>
-                <a href="#" target="_blank">
-                    <li class="icon facebook">
-                        <span class="tooltip">Facebook</span>
-                        <span><i class="fab fa-facebook-f"></i></span>
-                    </li>
-                </a>
-                <a href="#" target="_blank">
-                    <li class="icon instagram">
-                        <span class="tooltip">Instagram</span>
-                        <span><i class="fab fa-instagram"></i></span>
-                    </li>
-                </a>
-                <a href="#" target="_blank">
-                    <li class="icon twitter">
-                        <span class="tooltip">Twitter</span>
-                        <span><i class="fab fa-twitter"></i></span>
-                    </li>
-                </a>
-                <a href="#" target="_blank">
-                    <li class="icon github">
-                        <span class="tooltip">CodePen</span>
-                        <span><i class="fab fa-codepen"></i></span>
-                    </li>
-                </a>
-            </ul>
-        </div>
-        <div class="final_text"></div>
-        <p>Copyright &copy; All rights reserved
-            <br>Designed by Nuno Araújo, 2022
-        </p>
-    </footer>
+    </article>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+<!--    <article class="col-md-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12  col-sm-3 image">-->
+<!--                <img src="https://i.postimg.cc/W14rrCw1/book2.jpg"/>-->
+<!--            </div>-->
+<!--            <div class="col-md-12 col-sm-8">-->
+<!--                <h4 class="text-uppercase">book2</h4>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+<!--                    Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt-->
+<!--                    quaerat,-->
+<!--                    tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </article>-->
+<!--    <article class="col-md-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12 col-sm-3 image">-->
+<!--                <img src="https://i.postimg.cc/rwY49jfC/book3.jpg"/>-->
+<!--            </div>-->
+<!--            <div class="col-md-12 col-sm-8">-->
+<!--                <h4 class="text-uppercase">book3</h4>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+<!--                    Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt-->
+<!--                    quaerat,-->
+<!--                    tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </article>-->
+<!--    <article class="col-md-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12 col-sm-3 image">-->
+<!--                <img src="https://i.postimg.cc/CKBqr8ty/book4.jpg"/>-->
+<!--            </div>-->
+<!--            <div class="col-md-12 col-sm-8">-->
+<!--                <h4 class="text-uppercase">book4</h4>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+<!--                    Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt-->
+<!--                    quaerat,-->
+<!--                    tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </article>-->
+<!--</section>-->
+<!--&lt;!&ndash;Copie de section 1&ndash;&gt;-->
+<!--<section class="container Row">-->
+<!--    <article class="col-md-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12 col-sm-3 image">-->
+<!--                <img src="https://i.postimg.cc/2yfhZ52s/book1.jpg"/>-->
+<!--            </div>-->
+<!--            <div class="col-md-12 col-sm-8">-->
+<!--                <h4 class="text-uppercase">book1</h4>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+<!--                    Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt-->
+<!--                    quaerat,-->
+<!--                    tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </article>-->
+<!--    <article class="col-md-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12  col-sm-3 image">-->
+<!--                <img src="https://i.postimg.cc/W14rrCw1/book2.jpg"/>-->
+<!--            </div>-->
+<!--            <div class="col-md-12 col-sm-8">-->
+<!--                <h4 class="text-uppercase">book2</h4>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+<!--                    Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt-->
+<!--                    quaerat,-->
+<!--                    tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </article>-->
+<!--    <article class="col-md-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12 col-sm-3 image">-->
+<!--                <img src="https://i.postimg.cc/rwY49jfC/book3.jpg"/>-->
+<!--            </div>-->
+<!--            <div class="col-md-12 col-sm-8">-->
+<!--                <h4 class="text-uppercase">book3</h4>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+<!--                    Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt-->
+<!--                    quaerat,-->
+<!--                    tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </article>-->
+<!--    <article class="col-md-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12 col-sm-3 image">-->
+<!--                <img src="https://i.postimg.cc/CKBqr8ty/book4.jpg"/>-->
+<!--            </div>-->
+<!--            <div class="col-md-12 col-sm-8">-->
+<!--                <h4 class="text-uppercase">book4</h4>-->
+<!--                <p>-->
+<!--                    Lorem ipsum dolor sit amet consectetur adipisicing elit.-->
+<!--                    Quis et perspiciatis nihil assumenda mollitia excepturi ratione eaque a magni amet incidunt-->
+<!--                    quaerat,-->
+<!--                    tenetur sunt, cupiditate sapiente inventore nemo veniam molestias.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </article>-->
+</section>
+<footer>
+    <div class="social">
+        <p>Follow me on social media</p>
+        <ul class="wrapper">
+            <a href="#" target="_blank">
+                <li class="icon linkedin">
+                    <span class="tooltip">LinkedIn</span>
+                    <span><i class="fab fa-linkedin"></i></span>
+                </li>
+            </a>
+            <a href="#" target="_blank">
+                <li class="icon github">
+                    <span class="tooltip">GitHub</span>
+                    <span><i class="fab fa-github"></i></span>
+                </li>
+            </a>
+            <a href="#" target="_blank">
+                <li class="icon facebook">
+                    <span class="tooltip">Facebook</span>
+                    <span><i class="fab fa-facebook-f"></i></span>
+                </li>
+            </a>
+            <a href="#" target="_blank">
+                <li class="icon instagram">
+                    <span class="tooltip">Instagram</span>
+                    <span><i class="fab fa-instagram"></i></span>
+                </li>
+            </a>
+            <a href="#" target="_blank">
+                <li class="icon twitter">
+                    <span class="tooltip">Twitter</span>
+                    <span><i class="fab fa-twitter"></i></span>
+                </li>
+            </a>
+            <a href="#" target="_blank">
+                <li class="icon github">
+                    <span class="tooltip">CodePen</span>
+                    <span><i class="fab fa-codepen"></i></span>
+                </li>
+            </a>
+        </ul>
+    </div>
+    <div class="final_text"></div>
+    <p>Copyright &copy; All rights reserved
+<!--        <br>Designed by Nuno Araújo, 2022-->
+    </p>
+</footer>
+
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"-->
+<!--        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"-->
+<!--        crossorigin="anonymous"></script>-->
 
 <!--<h2>Это главная страница</h2>-->
 
 <!--<a href="{% url 'board:post_list'%}"><h3>Все объявления</h3></a>-->
 
 <!--<a href="{% url 'board:add_post'%}"><h3>Создать новое объявление</h3></a>-->
-
 
 
 {% endblock content %}
