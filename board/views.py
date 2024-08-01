@@ -1,29 +1,17 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
 from .forms import PostForm
 from .models import Post
-# from .forms import DeleteNewForm
-from django.contrib import messages
 
 
 # Create your views here.
 def root(request):
-    posts = Post.objects.all()
-    context = {
-        'title': 'Объявления',
-        'posts': posts
-    }
-    return render(request, template_name='board/index.html', context=context)
+    return render(request, template_name='board/index.html')
 
 
 def index(request):
-    posts = Post.objects.all()
-    context = {
-        'title': 'Объявления',
-        'posts': posts
-    }
-    return render(request, template_name='board/index.html', context=context)
+    return render(request, template_name='board/index.html')
 
 
 def about(request):
@@ -41,7 +29,7 @@ def contacts(request):
         'name': 'Тестовый сайт на Django',
         'email': 'd.test@yandex.ru',
         'title': 'Здесь будут контакты'
-    }
+        }
     return render(request, template_name='board/contacts.html', context=context)
 
 
@@ -118,15 +106,5 @@ def post_edit(request, pk):
 
 
 def post_delete(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    context = {'post': post}
-
-    if request.method == 'GET':
-        return render(request, template_name='board/post_confirm_delete.html', context=context)
-    elif request.method == 'POST':
-        post.delete()
-        messages.success(request, message='The post has been deleted successfully.')
-        return redirect('index')
-
-
-
+    # post = get_object_or_404(Post, pk=pk)
+    pass
