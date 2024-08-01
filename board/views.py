@@ -7,11 +7,21 @@ from .models import Post
 
 # Create your views here.
 def root(request):
-    return render(request, template_name='board/index.html')
+    posts = Post.objects.all()
+    context = {
+        'title': 'Объявления',
+        'posts': posts
+    }
+    return render(request, template_name='board/index.html', context=context)
 
 
 def index(request):
-    return render(request, template_name='board/index.html')
+    posts = Post.objects.all()
+    context = {
+        'title': 'Объявления',
+        'posts': posts
+    }
+    return render(request, template_name='board/index.html', context=context)
 
 
 def about(request):
@@ -29,7 +39,7 @@ def contacts(request):
         'name': 'Тестовый сайт на Django',
         'email': 'd.test@yandex.ru',
         'title': 'Здесь будут контакты'
-        }
+    }
     return render(request, template_name='board/contacts.html', context=context)
 
 
