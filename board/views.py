@@ -117,8 +117,6 @@ def post_edit(request, pk):
 
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)  # получить объект по ключу
-    print(post)
     if request.method == 'POST':
         post.delete()
-
-    return render(request, template_name='board/index.html')
+    return index(request)
