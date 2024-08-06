@@ -47,9 +47,9 @@ border-right: none;
 </style>
 
 <div style="text-align: center;">
-<h2>Список постов</h2>
+<h2>Список объявлений</h2>
     <table>
- <caption>Это таблица с постами</caption>
+<!-- <caption>Это таблица с постами</caption>-->
     <colgroup>
     </colgroup>
   <thead>
@@ -58,6 +58,7 @@ border-right: none;
         <th><h2>Заголовок</h2></th>
         <th><h2>Текст поста</h2></th>
         <th><h2>Дата поста</h2></th>
+        <th><h2>Сайт</h2></th>
     </tr>
   </thead>
   <tbody>
@@ -74,6 +75,9 @@ border-right: none;
         </td>
         <td>
             <h3>{{post.created_at}}</h3>
+        </td>
+        <td>
+            <h3>{{post.url_adders}}</h3>
         </td>
     </tr>
   {% endfor %}

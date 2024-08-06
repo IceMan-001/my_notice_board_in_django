@@ -31,9 +31,10 @@ class Post(models.Model):
     # поля таблицы
     author = models.CharField(max_length=50, verbose_name='Автор')
     title = models.CharField(max_length=200, verbose_name='Заголовок')
-    text = models.TextField(verbose_name='Текст объявления')
+    text = models.TextField(max_length=500, verbose_name='Текст объявления')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='Опубликовано',
                                       editable=False)  # Параметр 'editable' отключает возможность для редактирования
+    url_adders = models.CharField(max_length=150, verbose_name='Ссылка на сайт')
     image = models.ImageField(upload_to='posts/', null=True, verbose_name='Изображение')
 
     class Meta:  # Настроечный класс

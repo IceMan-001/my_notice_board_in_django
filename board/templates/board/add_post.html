@@ -1,11 +1,16 @@
 {% extends 'board/base.html' %}
-
+{% load static %}
 {% block content %}
-<h2>Добавить новый пост</h2>
+<link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="{% static 'css/form.css' %}" rel="stylesheet">
+<h2>Добавить новое объявление</h2>
 <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Создать пост</button>
+
+    <button type="submit">Создать объявление</button>
 </form>
+
 <a href="{% url 'board:index'%}"><h3>На главную страницу</h3></a>
 {% endblock content %}
