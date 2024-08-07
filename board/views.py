@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 
@@ -117,8 +118,8 @@ def post_edit(request, pk):
 
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)  # получить объект по ключу
-    print(post)
     if request.method == 'POST':
         post.delete()
+        messages.success(request, 'The post has been deleted successfully.')
+    return post_list(request)
 
-    return render(request, template_name='board/index.html')

@@ -138,11 +138,11 @@ nav li:hover {
     </div>
     <nav>
         <ul>
-            <li><a href="{% url 'board:post_list_in_table'%}">Объявления в виде таблицы</a></li>
-            <li><a href="{% url 'board:post_list'%}">Все объявления</a></li>
-            <li><a href="{% url 'board:add_post'%}">Создать новое объявление</a></li>
-            <li><a href="{% url 'board:about'%}">О сайте</a></li>
-            <li><a href="{% url 'board:contacts'%}">Контакты</a></li>
+            <li><a href="{% url 'board:post_list_in_table'%}" target="_blank">Объявления в виде таблицы</a></li>
+            <li><a href="{% url 'board:post_list'%}" target="_blank">Все объявления</a></li>
+            <li><a href="{% url 'board:add_post'%}" target="_blank">Создать новое объявление</a></li>
+            <li><a href="{% url 'board:about'%}" target="_blank">О сайте</a></li>
+            <li><a href="{% url 'board:contacts'%}" target="_blank">Контакты</a></li>
             <li><a href="#">Регистрация</a></li>
         </ul>
     </nav>
@@ -180,13 +180,19 @@ nav li:hover {
     <div class="social">
         <p>Follow me on social media</p>
         <ul class="wrapper">
-            <a href="#" target="_blank">
+            <a href="https://vk.com/" target="_blank">
                 <li class="icon linkedin">
-                    <span class="tooltip">LinkedIn</span>
-                    <span><i class="fab fa-linkedin"></i></span>
+                    <span class="tooltip">VK</span>
+                    <span><i class="fab fa-vk"></i></span>
                 </li>
             </a>
-            <a href="#" target="_blank">
+             <a href="https://www.youtube.com/" target="_blank">
+                <li class="icon youtube">
+                    <span class="tooltip">YouTube</span>
+                    <span><i class="fab fa-youtube"></i></span>
+                </li>
+            </a>
+            <a href="https://github.com/" target="_blank">
                 <li class="icon github">
                     <span class="tooltip">GitHub</span>
                     <span><i class="fab fa-github"></i></span>
@@ -210,7 +216,7 @@ nav li:hover {
                     <span><i class="fab fa-twitter"></i></span>
                 </li>
             </a>
-            <a href="#" target="_blank">
+            <a href="https://codepen.io/trending" target="_blank">
                 <li class="icon github">
                     <span class="tooltip">CodePen</span>
                     <span><i class="fab fa-codepen"></i></span>
