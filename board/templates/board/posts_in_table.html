@@ -1,8 +1,9 @@
 {% extends 'board/base.html' %}
 {% load static %}
+
 {% block content %}
 
-<link href="{% static 'css/style_table.css' %}" rel="stylesheet">
+<link href="{% static 'style_table.css' %}" rel="stylesheet">
 <!--<style>-->
 <!--  table {-->
 <!--font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;-->
@@ -48,12 +49,11 @@
 <!--}-->
 <!--</style>-->
 
-<div style="text-align: center;">
-    <h2>Список объявлений</h2>
+<div>
+    <h2 class="how">Список объявлений</h2>
     <table>
-        <!-- <caption>Это таблица с постами</caption>-->
-        <colgroup>
-        </colgroup>
+        <caption></caption>
+        <colgroup></colgroup>
         <thead>
         <tr>
             <th><h2>Автор</h2></th>

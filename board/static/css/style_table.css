@@ -1,3 +1,4 @@
+
 table {
 font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 font-size: 14px;
@@ -39,4 +40,12 @@ border-radius: 0 0 10px 0;
 }
 tr td:last-child {
 border-right: none;
+}
+div {
+text-align: center;
+}
+.how {
+font-size: 50px;
+text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
 }

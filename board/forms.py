@@ -16,6 +16,14 @@ class PostForm(forms.ModelForm):
         # fields = '__all__'
         # exclude = ['created_at'] или так
 
+    def __init__(self, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+
+        self.fields['author'].widget.attrs['placeholder'] = 'Укажите автора'
+        self.fields['title'].widget.attrs['placeholder'] = 'Укажите заголовок'
+        self.fields['text'].widget.attrs['placeholder'] = 'Текст объявления'
+        self.fields['image'].widget.attrs['placeholder'] = 'Фотография'
+        self.fields['url_adders'].widget.attrs['placeholder'] = 'Укажите email'
 
 # class DeleteNewForm(forms.ModelForm):
 #     class Meta:
