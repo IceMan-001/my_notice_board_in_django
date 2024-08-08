@@ -6,13 +6,15 @@
     border-radius: 10px;
     text-decoration: none
   }
-   .show {
+
+.show {
     display: block !important;
     transition: 2s ease;
   }
-    html {
-    background-image: url("{% static 'img/ruscella_1200.jpg' %}");
-}
+
+html {
+    background-image: url("{% media 'boards/ruscella_1200.jpg' %}");
+ }
 
 main {
     display: grid;
@@ -22,17 +24,19 @@ main {
     grid-row-gap: 20px;
     padding: 0 5% 0 10%;
 
-}
+ }
 
 body {
     max-width: 1200px;
-  }
-    img {
+ }
+
+img {
     width: 155px;
     height: 125px;
     border-radius: 5%;
-}
-    h4 {
+ }
+
+h4 {
   color: lightslategrey;
   font-family: 'Times New Roman', Times, serif;
   font-style: oblique;
@@ -40,16 +44,18 @@ body {
   font-weight: bold;
   font-size: 18px;
   margin-top: 15px;
-}
-   .image {
+ }
+
+.image {
   text-align: center;
-}
-  p {
+ }
+
+p {
   font-size: 18px;
   font-weight: 500;
-}
+ }
 
-   header {
+header {
     margin-top: -110px;
     left: 0;
     margin-left: 50px;
@@ -91,7 +97,7 @@ body {
 nav {
     margin: 20px 0;
     text-align: center;
-}
+ }
 nav ul {
     display: flex;
     flex-direction: row;
@@ -120,5 +126,4 @@ main {
     background-color: #ede7dc;
     padding: 20px;
     min-height: 100vh;
-
   }

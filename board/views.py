@@ -120,6 +120,6 @@ def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)  # получить объект по ключу
     if request.method == 'POST':
         post.delete()
-        messages.success(request, 'The post has been deleted successfully.')
+        # messages.success(request, 'The post has been deleted successfully.')
     return post_list(request)
 
