@@ -5,16 +5,16 @@
     font-size: 18px;
     border-radius: 10px;
     text-decoration: none
-  }
+}
 
 .show {
     display: block !important;
     transition: 2s ease;
-  }
+}
 
 html {
-    background-image: url("{% media 'boards/ruscella_1200.jpg' %}");
- }
+    background-image: url("{% static 'img/ruscella_1200.jpg' %}")
+}
 
 main {
     display: grid;
@@ -24,36 +24,36 @@ main {
     grid-row-gap: 20px;
     padding: 0 5% 0 10%;
 
- }
+}
 
 body {
     max-width: 1200px;
- }
+}
 
 img {
     width: 155px;
     height: 125px;
     border-radius: 5%;
- }
+}
 
 h4 {
-  color: lightslategrey;
-  font-family: 'Times New Roman', Times, serif;
-  font-style: oblique;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  margin-top: 15px;
- }
+    color: lightslategrey;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 15px;
+}
 
 .image {
-  text-align: center;
- }
+    text-align: center;
+}
 
 p {
-  font-size: 18px;
-  font-weight: 500;
- }
+    font-size: 18px;
+    font-weight: 500;
+}
 
 header {
     margin-top: -110px;
@@ -65,44 +65,51 @@ header {
     border: 4px solid #ede7dc;
     width: calc(100vw - 116px);
     position: fixed;
-  }
+}
 
 .logo-nav {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-  }
+}
+
 .logo-nav--small {
     justify-content: space-evenly;
-  }
+}
 
 .logo {
     height: 70px;
     margin-top: 10px;
-  }
+}
+
 .logo--small {
     display: flex;
     justify-content: center;
-  }
+}
+
 .logo img {
     margin-left: 15%;
     height: 100%;
     width: auto;
-  }
+}
+
 .nav-small {
     width: 50%;
     display: flex;
     justify-content: center;
-  }
+}
+
 nav {
     margin: 20px 0;
     text-align: center;
- }
+}
+
 nav ul {
     display: flex;
     flex-direction: row;
 
-  }
+}
+
 nav li {
     list-style-type: none;
     padding: 10px;
@@ -111,12 +118,13 @@ nav li {
     background-color: #83adad;
     color: #ede7dc;
     transition: 0.5s ease-in-out;
-  }
+}
+
 nav li:hover {
     cursor: pointer;
     background-color: #ede7dc;
     color: #ccafa5;
-  }
+}
 
 main {
 
@@ -126,4 +134,4 @@ main {
     background-color: #ede7dc;
     padding: 20px;
     min-height: 100vh;
-  }
+}

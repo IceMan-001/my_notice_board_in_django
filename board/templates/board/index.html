@@ -1,136 +1,10 @@
 {% extends 'board/base.html' %}
 {% load static %}
 {% block content %}
+<html style="background-image: url('board/static/img/ruscella_1200.jpg')">
 
-
-<link rel="stylesheet" href="{% static 'css/header.css' %}"  type="text/css">
-<link rel="stylesheet" href="{% static 'css/footer.css' %}"  type="text/css">
-
-<style>
-<!--    * {-->
-<!--    margin: 0;-->
-<!--    padding: 0;-->
-<!--    font-family: Arial;-->
-<!--    font-size: 18px;-->
-<!--    border-radius: 10px;-->
-<!--    text-decoration: none-->
-<!--  }-->
-<!--   .show {-->
-<!--    display: block !important;-->
-<!--    transition: 2s ease;-->
-<!--  }-->
-    html {
-    background-image: url("{% static 'img/ruscella_1200.jpg' %}");
-}
-
-<!--main {-->
-<!--    display: grid;-->
-<!--    grid-template-columns: repeat(3, 1fr);-->
-<!--    grid-template-rows: repeat(2, 1fr);-->
-<!--    grid-column-gap: 50px;-->
-<!--    grid-row-gap: 20px;-->
-<!--    padding: 0 5% 0 10%;-->
-
-<!--    border: 4px solid #ede7dc;-->
-<!--    width: calc(100vw - 115px);-->
-<!--    margin: 155px 50px 0 50px;-->
-<!--    background-color: #ede7dc;-->
-<!--    padding: 20px;-->
-<!--    min-height: 100vh;-->
-
-<!--}-->
-
-<!--body {-->
-<!--    max-width: 1200px;-->
-<!--  }-->
-<!--    img {-->
-<!--    width: 200px;-->
-<!--    height: 125px;-->
-<!--    border-radius: 5%;-->
-<!--}-->
-<!--    h4 {-->
-<!--  color: lightslategrey;-->
-<!--  font-family: 'Times New Roman', Times, serif;-->
-<!--  font-style: oblique;-->
-<!--  text-align: center;-->
-<!--  font-weight: bold;-->
-<!--  font-size: 25px;-->
-<!--  margin-top: 15px;-->
-<!--}-->
-<!--   .image {-->
-<!--  text-align: center;-->
-<!--}-->
-<!--  p {-->
-<!--  font-size: 18px;-->
-<!--  font-weight: 500;-->
-<!--}-->
-
-<!--   header {-->
-<!--    margin-top: -110px;-->
-<!--    left: 0;-->
-<!--    margin-left: 50px;-->
-<!--    background-color: #449b9b;-->
-<!--    display: flex;-->
-<!--    justify-content: space-between;-->
-<!--    border: 4px solid #ede7dc;-->
-<!--    width: calc(100vw - 116px);-->
-<!--    position: fixed;-->
-<!--  }-->
-
-<!--.logo-nav {-->
-<!--    display: flex;-->
-<!--    flex-direction: row;-->
-<!--    justify-content: space-evenly;-->
-<!--  }-->
-<!--.logo-nav&#45;&#45;small {-->
-<!--    justify-content: space-evenly;-->
-<!--  }-->
-
-<!--.logo {-->
-<!--    height: 70px;-->
-<!--    margin-top: 10px;-->
-<!--  }-->
-<!--.logo&#45;&#45;small {-->
-<!--    display: flex;-->
-<!--    justify-content: center;-->
-<!--  }-->
-<!--.logo img {-->
-<!--    /* width: 20%;-->
-<!--    height: auto; */-->
-<!--    margin-left: 15%;-->
-<!--    height: 100%;-->
-<!--    width: auto;-->
-<!--  }-->
-<!--.nav-small {-->
-<!--    width: 50%;-->
-<!--    display: flex;-->
-<!--    justify-content: center;-->
-<!--  }-->
-<!--nav {-->
-<!--    margin: 20px 0;-->
-<!--    text-align: center;-->
-<!--}-->
-<!--nav ul {-->
-<!--    display: flex;-->
-<!--    flex-direction: row;-->
-
-<!--  }-->
-<!--nav li {-->
-<!--    list-style-type: none;-->
-<!--    padding: 10px;-->
-<!--    margin: 0 10px;-->
-<!--    border: 4px solid #ccafa5;-->
-<!--    background-color: #83adad;-->
-<!--    color: #ede7dc;-->
-<!--    transition: 0.5s ease-in-out;-->
-<!--  }-->
-<!--nav li:hover {-->
-<!--    cursor: pointer;-->
-<!--    background-color: #ede7dc;-->
-<!--    color: #ccafa5;-->
-<!--  }-->
-</style>
-
+<link rel="stylesheet" href="{% static 'css/header.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}" type="text/css">
 
 <header>
     <div class="logo">
@@ -138,11 +12,11 @@
     </div>
     <nav>
         <ul>
-            <li><a href="{% url 'board:post_list_in_table'%}" >Объявления в виде таблицы</a></li>
-            <li><a href="{% url 'board:post_list'%}" >Все объявления</a></li>
-            <li><a href="{% url 'board:add_post'%}" >Создать новое объявление</a></li>
-            <li><a href="{% url 'board:about'%}" >О сайте</a></li>
-            <li><a href="{% url 'board:contacts'%}" >Контакты</a></li>
+            <li><a href="{% url 'board:post_list_in_table'%}">Объявления в виде таблицы</a></li>
+            <li><a href="{% url 'board:post_list'%}">Все объявления</a></li>
+            <li><a href="{% url 'board:add_post'%}">Создать новое объявление</a></li>
+            <li><a href="{% url 'board:about'%}">О сайте</a></li>
+            <li><a href="{% url 'board:contacts'%}">Контакты</a></li>
             <li><a href="#">Регистрация</a></li>
         </ul>
     </nav>
@@ -180,43 +54,43 @@
     <div class="social">
         <p>Follow me on social media</p>
         <ul class="wrapper">
-            <a href="https://vk.com/" >
+            <a href="https://vk.com/">
                 <li class="icon linkedin">
                     <span class="tooltip">VK</span>
                     <span><i class="fab fa-vk"></i></span>
                 </li>
             </a>
-             <a href="https://www.youtube.com/" >
+            <a href="https://www.youtube.com/">
                 <li class="icon youtube">
                     <span class="tooltip">YouTube</span>
                     <span><i class="fab fa-youtube"></i></span>
                 </li>
             </a>
-            <a href="https://github.com/" >
+            <a href="https://github.com/">
                 <li class="icon github">
                     <span class="tooltip">GitHub</span>
                     <span><i class="fab fa-github"></i></span>
                 </li>
             </a>
-            <a href="#" >
+            <a href="#">
                 <li class="icon facebook">
                     <span class="tooltip">Facebook</span>
                     <span><i class="fab fa-facebook-f"></i></span>
                 </li>
             </a>
-            <a href="#" >
+            <a href="#">
                 <li class="icon instagram">
                     <span class="tooltip">Instagram</span>
                     <span><i class="fab fa-instagram"></i></span>
                 </li>
             </a>
-            <a href="#" >
+            <a href="#">
                 <li class="icon twitter">
                     <span class="tooltip">Twitter</span>
                     <span><i class="fab fa-twitter"></i></span>
                 </li>
             </a>
-            <a href="https://codepen.io/trending" >
+            <a href="https://codepen.io/trending">
                 <li class="icon github">
                     <span class="tooltip">CodePen</span>
                     <span><i class="fab fa-codepen"></i></span>
@@ -226,13 +100,11 @@
     </div>
     <div class="final_text"></div>
     <p>Copyright &copy; All rights reserved</p>
-
-
 </footer>
 
 <script src="{% static 'javaScript/header.js' %}"></script>
 
-
+</html>
 {% endblock content %}
 
 

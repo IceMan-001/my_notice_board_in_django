@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 
     var logo = $(".logo").html();
@@ -8,37 +8,37 @@ $(document).ready(function() {
 
 
     function small() {
-      $("header").empty().append(headerSmall);
-      $(".burgermenue").click(function() {
-        $(".burgermenue").toggleClass("burgermenue--active");
-        $(".burgermenue__list").toggleClass("show");
-        $(".burgermenue__line-top").toggleClass("burgermenue__line-top--active");
-        $(".burgermenue__line-middle").toggleClass("burgermenue__line-middle--active");
-        $(".burgermenue__line-bottom").toggleClass("burgermenue__line-bottom--active");
-      });
+        $("header").empty().append(headerSmall);
+        $(".burgermenue").click(function () {
+            $(".burgermenue").toggleClass("burgermenue--active");
+            $(".burgermenue__list").toggleClass("show");
+            $(".burgermenue__line-top").toggleClass("burgermenue__line-top--active");
+            $(".burgermenue__line-middle").toggleClass("burgermenue__line-middle--active");
+            $(".burgermenue__line-bottom").toggleClass("burgermenue__line-bottom--active");
+        });
     }
 
     function big() {
-      $("header").empty().append(headerBig);
+        $("header").empty().append(headerBig);
     };
 
 
     // Beim Skalieren der Seite
-    $(window).resize(function() {
-      var screenwidth = $(window).width();
-      if (screenwidth <= 1000) {
-        small();
-      } else {
-        big();
-      }
+    $(window).resize(function () {
+        var screenwidth = $(window).width();
+        if (screenwidth <= 1000) {
+            small();
+        } else {
+            big();
+        }
     });
 
     // Beim Laden der Seite
-    if ( $(window).width() <= 1000 ) {
-      small();
+    if ($(window).width() <= 1000) {
+        small();
     } else {
-      big();
+        big();
     }
 
 
-  });
+});
