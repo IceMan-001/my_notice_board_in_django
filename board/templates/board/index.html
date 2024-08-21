@@ -1,7 +1,11 @@
 {% extends 'board/base.html' %}
 {% load static %}
 {% block content %}
-<html style="background-image: url('board/static/img/ruscella_1200.jpg')">
+<style>
+    body {
+    background-image: url("{%static 'img/ruscella_1200.jpg'%}")
+    }
+</style>
 
 <link rel="stylesheet" href="{% static 'css/header.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/footer.css' %}" type="text/css">
