@@ -120,6 +120,13 @@ def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)  # получить объект по ключу
     if request.method == 'POST':
         post.delete()
-        # messages.success(request, 'The post has been deleted successfully.')
-    return post_list(request)
+        return redirect('board:post_list')
+    return render(request, template_name="board/post_delete.html", context={'post': post})
 
+
+def page_not_found(request, exception):
+    return render(request, 'board/404.html', status=404)
+
+
+def server_error(request):
+    return render(request, 'board/500.html', status=500)

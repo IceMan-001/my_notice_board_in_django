@@ -24,8 +24,12 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', root),
     path('admin/', admin.site.urls),
-    path('board/', include('board.urls'))
+    path('board/', include('board.urls')),
+    path('users/', include('users.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = "board.views.page_not_found"
+handler500 = "board.views.server_error"

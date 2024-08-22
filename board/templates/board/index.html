@@ -1,14 +1,19 @@
 {% extends 'board/base.html' %}
 {% load static %}
 {% block content %}
-<style>
-    body {
-    background-image: url("{%static 'img/ruscella_1200.jpg'%}")
-    }
-</style>
+
 
 <link rel="stylesheet" href="{% static 'css/header.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/footer.css' %}" type="text/css">
+<style>
+    html {
+        background-image: url("{% static 'img/priroda-66.jpg' %}");
+        /*background-image: url( "/static/img/priroda-66.jpg");*/
+        background-repeat: repeat;
+        max-width: 1600px;
+    }
+</style>
+
 
 <header>
     <div class="logo">
@@ -53,7 +58,7 @@
         </section>
         {% endfor %}
     </main>
-</div>>
+</div>
 <footer>
     <div class="social">
         <p>Follow me on social media</p>

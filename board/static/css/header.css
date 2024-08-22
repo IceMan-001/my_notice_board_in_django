@@ -12,9 +12,6 @@
     transition: 2s ease;
 }
 
-html {
-    background-image: url("{% static 'img/ruscella_1200.jpg' %}")
-}
 
 main {
     display: grid;
@@ -23,12 +20,11 @@ main {
     grid-column-gap: 50px;
     grid-row-gap: 20px;
     padding: 0 5% 0 10%;
-
 }
 
-body {
-    max-width: 1200px;
-}
+/*body {*/
+/*    max-width: 1200px;*/
+/*}*/
 
 img {
     width: 155px;
