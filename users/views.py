@@ -35,11 +35,29 @@ def register(request):
 
 
 def log_in(request):
-    pass
+    # Создание формы аутентификации
+    form = AuthenticationForm(request, request.POST)
+    # Проверка формы
+    if form.is_valid():
+        # Получения логина и пароля из формы
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        # Аунтификация пользователя (проверка наличия пользователя и пароля)
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            # Авторизация пользователя (проверка прав доступа)
+            login(request, user)
+            # Получение дальнейшего маршрута после авторизации (next - путь, откуда пришел пользователь)
+            url = request.GET.get('next', LOGIN_REDIRECT_URL)
+            return redirect(url)
+    context = {'form': form}
+    return render(request, template_name='users/login.html', context=context)
 
 
+@login_required
 def log_out(request):
-    pass
+    logout(request)
+    return redirect('board:index')
 
 
 def user_detail(request, pk):

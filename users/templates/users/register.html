@@ -1,13 +1,13 @@
-{% extends 'board/base.html '%}
+{% extends 'users/base.html '%}
 
 {% block content %}
 
 <h2>Регистрация пользователя</h2>
-<!--<form method="post">-->
-<!--    {% csrf_token %}-->
-<!--    {{ register_form }}-->
+<form method="post">
+    {% csrf_token %}
+    {{ register_form }}
 
-    <button type="submit"> Зарегистрироваться </button>
+    <button type="submit"> Зарегистрироваться</button>
 </form>
 
 {% endblock content %}
