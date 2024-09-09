@@ -60,8 +60,14 @@ def log_out(request):
     return redirect('board:index')
 
 
+@login_required
 def user_detail(request, pk):
-    pass
+    user = get_object_or_404(User, pk=pk)
+    if request.user != user:
+        raise PermissionDenied()
+
+    context = {'user': user, 'title': 'Информация о профиле'}
+    return render(request, template_name='users/profile.html', context=context)
 
 
 def change_password(request):
