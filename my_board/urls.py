@@ -31,5 +31,6 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+handler403 = "board.views.forbidden"
 handler404 = "board.views.page_not_found"
 handler500 = "board.views.server_error"

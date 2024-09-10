@@ -30,7 +30,10 @@ def register(request):
 
     # Если метод GET - отрисовка страницы регистрации
     user_form = UserRegistrationForm()
-    context = {'title': 'Регистрация', 'register_form': user_form}
+    context = {
+        'title': 'Регистрация',
+        'register_form': user_form
+    }
     return render(request, template_name='users/register.html', context=context)
 
 
@@ -66,7 +69,11 @@ def user_detail(request, pk):
     if request.user != user:
         raise PermissionDenied()
 
-    context = {'user': user, 'title': 'Информация о профиле'}
+    context = {
+        'user': user,
+        'title': 'Информация о профиле'
+    }
+
     return render(request, template_name='users/profile.html', context=context)
 
 

@@ -18,8 +18,8 @@ class UserRegistrationForm(forms.ModelForm):
         return cleaned_data['password2']
 
     class Meta:
-        model = User
-        fields = ('username', 'password', 'first_name', 'last_name', 'email', 'phone', 'city')
+        model = User  # Установка связи между model и User
+        fields = ('username', 'first_name', 'last_name', 'password',  'email', 'phone', 'city')
 
 
 class CustomPasswordChangeForm(forms.Form):

@@ -1,6 +1,8 @@
-from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from django.views.generic import ListView
+from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 from .forms import PostForm
 from .models import Post
@@ -44,9 +46,10 @@ def contacts(request):
     return render(request, template_name='board/contacts.html', context=context)
 
 
+@login_required
 def add_post(request):
     if request.method == 'GET':
-        form = PostForm()
+        form = PostForm(author=request.user)
         context = {
             'form': form,
             'title': 'Добавление объявления'
@@ -54,7 +57,7 @@ def add_post(request):
         return render(request, template_name='board/add_post.html', context=context)
 
     if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES, author=request.user)
         if form.is_valid():
             # post = Post()
             # post.author = form.cleaned_data['author']
@@ -87,9 +90,9 @@ def post_list(request):
     return render(request, template_name='board/posts.html', context=context)
 
 
-def post_detail(request, pk):
+def post_detail(request, slug):
     # получаем объект с заданным первичным ключом
-    posts = get_object_or_404(Post, pk=pk)
+    posts = get_object_or_404(Post, slug=slug)
     # post = Post.objects.get(pk=pk)
     context = {
         'title': 'Информация о посте',
@@ -99,6 +102,7 @@ def post_detail(request, pk):
     return render(request, template_name='board/post_detail.html', context=context)
 
 
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)  # получить объект по ключу
     if request.method == 'POST':
@@ -116,6 +120,7 @@ def post_edit(request, pk):
     return render(request, template_name='board/post_edit.html', context=context)
 
 
+@login_required
 def post_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)  # получить объект по ключу
     if request.method == 'POST':
@@ -124,9 +129,13 @@ def post_delete(request, pk):
     return render(request, template_name="board/post_delete.html", context={'post': post})
 
 
+def forbidden(request, exception):
+    return render(request, template_name='board/403.html', status=403)
+
+
 def page_not_found(request, exception):
-    return render(request, 'board/404.html', status=404)
+    return render(request, template_name='board/404.html', status=404)
 
 
 def server_error(request):
-    return render(request, 'board/500.html', status=500)
+    return render(request, template_name='board/500.html', status=500)
