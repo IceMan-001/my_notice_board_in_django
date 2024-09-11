@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from my_board.settings import LOGIN_REDIRECT_URL
 from .forms import UserRegistrationForm, CustomPasswordChangeForm
+from .models import CustomUser
 
 User = get_user_model()
 
@@ -77,5 +78,45 @@ def user_detail(request, pk):
     return render(request, template_name='users/profile.html', context=context)
 
 
+@login_required
+def user_edit(request, pk):
+    post = get_object_or_404(CustomUser, pk=pk)  # получить объект по ключу
+    if request.method == 'POST':
+        form = UserRegistrationForm(data=request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return user_detail(request)
+
+    else:
+        form = UserRegistrationForm(instance=post)
+    context = {
+        'form': form,
+        'title': 'Редактировать пост'
+    }
+    return render(request, template_name='users/user_edit.html', context=context)
+
+
 def change_password(request):
-    pass
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(request.POST)
+
+        if form.is_valid():
+            old_password = form.cleaned_data['old_password']
+            new_password = form.cleaned_data['new_password_1']
+
+            if request.user.check_password(old_password):
+                request.user.set_password(new_password)
+                request.user.save()
+                update_session_auth_hash(request, request.user)
+                return redirect('board:index')
+
+            else:
+                form.add_error('old_password', 'Старый пароль неверный')
+                return redirect('users:change_password')
+
+        return redirect('users:change_password')
+
+    else:
+        form = CustomPasswordChangeForm()
+        context = {'title': 'Сменить пароль', 'form': form}
+        return render(request, template_name='users/change_password.html', context=context)

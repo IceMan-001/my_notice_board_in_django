@@ -12,4 +12,6 @@
 <hr>
 <div>Дата регистрации - {{ user.date_joined|date:'d-m-Y H:i'}}</div>
 
+<a href="{% url 'users:user_edit' pk=user.id%}" class="btn btn-primary">Редактировать</a>
+
 {% endblock content %}

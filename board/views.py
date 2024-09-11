@@ -82,10 +82,17 @@ def post_list_in_table(request):  # Посты в виде таблицы
 
 def post_list(request):
     # Получаем все объекты модели Post
-    posts = Post.objects.all()
+    # сортируем по убыванию
+    posts = Post.objects.all().order_by('-created_at')
+    # показываем по 4 поста на странице
+    # получаем номер страницы из url
+    paginator = Paginator(posts, 4)
+    page_number = request.GET.get('page')
+    # получаем объекты для текущей страницы
+    page_obj = paginator.get_page(page_number)
     context = {
         'title': 'Объявления',
-        'posts': posts
+        'page_obj': page_obj
     }
     return render(request, template_name='board/posts.html', context=context)
 
@@ -114,9 +121,9 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     context = {
-        'form': form,
-        'title': 'Редактировать пост'
-    }
+            'form': form,
+            'title': 'Редактировать пост'
+        }
     return render(request, template_name='board/post_edit.html', context=context)
 
 
