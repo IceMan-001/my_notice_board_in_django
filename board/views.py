@@ -122,9 +122,9 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     context = {
             'form': form,
-            'title': 'Редактировать пост'
+            'title': 'Редактировать объявление'
         }
-    return render(request, template_name='board/post_edit.html', context=context)
+    return render(request, template_name='users/user_edit.html', context=context)
 
 
 @login_required

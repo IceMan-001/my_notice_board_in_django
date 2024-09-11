@@ -85,14 +85,14 @@ def user_edit(request, pk):
         form = UserRegistrationForm(data=request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return user_detail(request)
+            return user_detail(request, pk=pk)
 
     else:
         form = UserRegistrationForm(instance=post)
     context = {
-        'form': form,
-        'title': 'Редактировать пост'
-    }
+            'form': form,
+            'title': 'Редактировать данные пользователя'
+        }
     return render(request, template_name='users/user_edit.html', context=context)
 
 

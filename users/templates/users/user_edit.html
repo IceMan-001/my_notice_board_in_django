@@ -3,8 +3,8 @@
 {% block content %}
 
 <div class="container">
-    <form action="" method="post">
-        <legend>{{title}}</legend>
+    <form class="row" action="" method="post">
+        <legend><h2 class="col-12 mb-2 mx-3">{{title}} <i>{{ user.username }}</i></h2></legend>
         <label>{% csrf_token %}</label>
         <label>{{ form.as_p }}</label>
         <label>
