@@ -113,18 +113,18 @@ def post_detail(request, slug):
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)  # получить объект по ключу
     if request.method == 'POST':
-        form = PostForm(data=request.POST, instance=post)
+        form = PostForm(data=request.POST, instance=post, author=request.user)
         if form.is_valid():
             form.save()
             return post_list(request)
 
     else:
-        form = PostForm(instance=post)
+        form = PostForm(instance=post, author=request.user)
     context = {
             'form': form,
             'title': 'Редактировать объявление'
         }
-    return render(request, template_name='users/user_edit.html', context=context)
+    return render(request, template_name='board/post_edit.html', context=context)
 
 
 @login_required

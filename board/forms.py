@@ -13,16 +13,15 @@ class PostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         author = kwargs.pop('author', None)
         super(PostForm, self).__init__(*args, **kwargs)
+        if author:
+            self.fields['author'].initial = author
+            self.fields['author'].disabled = True
 
         self.fields['author'].widget.attrs['placeholder'] = 'Укажите автора'
         self.fields['title'].widget.attrs['placeholder'] = 'Укажите заголовок'
         self.fields['text'].widget.attrs['placeholder'] = 'Текст объявления'
         self.fields['image'].widget.attrs['placeholder'] = 'Фотография'
         self.fields['url_adders'].widget.attrs['placeholder'] = 'Укажите email'
-
-        if author:
-            self.fields['author'].initial = author
-            self.fields['author'].disabled = True
 
     class Meta:
         model = Post

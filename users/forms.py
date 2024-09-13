@@ -11,6 +11,13 @@ class UserRegistrationForm(forms.ModelForm):
     password2 = forms.CharField(label='Повторите пароль',
                                 widget=forms.PasswordInput)  # widget=forms.PasswordInput - скрытый ввод
 
+    # def __init__(self, *args, **kwargs):
+    #     author = kwargs.pop('author', None)
+    #     super(UserRegistrationForm, self).__init__(*args, **kwargs)
+    #     if author:
+    #         self.fields['author'].initial = author
+    #         self.fields['author'].disabled = True
+
     def clean_password2(self):
         cleaned_data = self.cleaned_data
         if cleaned_data['password'] != cleaned_data['password2']:
@@ -19,7 +26,7 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User  # Установка связи между model и User
-        fields = ('username', 'first_name', 'last_name', 'password',  'email', 'phone', 'city')
+        fields = ('username', 'first_name', 'last_name', 'password', 'email', 'phone', 'city')
 
 
 class CustomPasswordChangeForm(forms.Form):
